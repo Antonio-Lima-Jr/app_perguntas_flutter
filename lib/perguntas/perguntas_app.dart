@@ -14,12 +14,11 @@ class _PerguntasAppState extends State<PerguntasApp> {
   void responder(String reposta) {
     print(reposta);
     setState(() {
-      var listRespostas =
-          _perguntas[_nextQuestion]['respostas'] as List<Map<String, Object>>;
-      _pontuacaoTotal += listRespostas
-          .firstWhere((e) => e['texto'] == reposta)['score'] as int;
       if (existNextQuestion) {
-        _nextQuestion++;
+        var listRespostas = _perguntas[_nextQuestion++]['respostas']
+            as List<Map<String, Object>>;
+        _pontuacaoTotal += listRespostas
+            .firstWhere((e) => e['texto'] == reposta)['score'] as int;
       }
     });
   }
